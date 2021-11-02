@@ -35,7 +35,12 @@
                                 <a href="storage/{{ $archivo->expediente_id }}/{{ $archivo->archivo }}" class="btn btn-info">Ver</a>
                             </th>
                             <th>
-                                <button type="button" class="btn btn-danger">Eliminar</button>
+                                <form action="{{ route('archivos.destroy', $archivo)}}" method="POST">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                               
                             </th>
                             
                         </tr>

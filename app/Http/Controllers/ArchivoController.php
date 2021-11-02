@@ -48,7 +48,6 @@ class ArchivoController extends Controller
     public function show(Archivo $archivo)
     {
         return $archivo;
-        //return view('archivos.create');
     }
 
     public function edit(Archivo $archivo)
@@ -69,7 +68,9 @@ class ArchivoController extends Controller
      */
     public function destroy(Archivo $archivo)
     {
-        
+        unlink(public_path('storage'.'/'.$archivo->expediente_id.'/'.$archivo->archivo)); 
+        $archivo->delete(); 
+        return redirect()->route('expedientes.index')->with('info','El archivo se elimino con exito!');
     }
     public function crear(Expediente $expediente){
         return view('archivos.create',compact('expediente'));
