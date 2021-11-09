@@ -32,7 +32,8 @@
                             <th>{{$archivo->descripcion}}</th>
                             <th>{{$archivo->archivo}}</th>
                             <th>
-                                <a href="storage/{{ $archivo->expediente_id }}/{{ $archivo->archivo }}" class="btn btn-info">Ver</a>
+                                <a href="/storage/{{ $archivo->expediente_id }}/{{ $archivo->archivo }}" class="btn btn-info">Ver</a>
+                                    {{--  <a href="/storage/1/hotelBase.txt"  class="btn btn-info">Ver</a>    --}}
                             </th>
                             <th>
                                 <form action="{{ route('archivos.destroy', $archivo)}}" method="POST">
