@@ -30,10 +30,12 @@ class ExpedienteController extends Controller
         }else{
             $expedientes = Expediente::join("abogados","expedientes.abogado_id","=","abogados.id")
             ->where('abogados.user_id',Auth::id())
+            ->select('expedientes.id','expedientes.Caso','expedientes.juez_id','expedientes.abogado_id','expedientes.procurador_id','expedientes.demandado_id','expedientes.demandante_id')
             ->get();
             if (!$expedientes->count()) {
                 $expedientes = Expediente::join("procuradors","expedientes.procurador_id","=","procuradors.id")
                 ->where('procuradors.user_id',Auth::id())
+                ->select('expedientes.id','expedientes.Caso','expedientes.juez_id','expedientes.abogado_id','expedientes.procurador_id','expedientes.demandado_id','expedientes.demandante_id')
                 ->get();
             }
         }
